@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Love Question</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background: #f5f5f5;
+    overflow: hidden;
+    margin: 0;
+}
+
+/* Center everything */
+.container {
+    margin-top: 8vh;
+    padding: 10px;
+}
+
+/* Cartoon sticker — responsive */
+.sticker {
+    width: 80%;
+    max-width: 260px;
+    border-radius: 20px;
+}
+
+/* Question text */
+h1 {
+    margin: 20px 0;
+    color: #333;
+    font-size: 6vw; /* auto-scale text */
+}
+
+/* Buttons style */
+button {
+  background-color: #ff69b4;
+  border: none;
+  color: white;
+  padding: 14px 28px;
+  font-size: 18px;
+  margin: 10px;
+  cursor: pointer;
+  border-radius: 20px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+/* YES button */
+#yesBtn {
+    background: #ff7b9c;
+    position: relative;
+    left: -20%;
+}
+
+/* NO button */
+#noBtn {
+    background: #ff4d4d;
+    position: absolute;
+    left: 55%;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- Replace with your GIF or video -->
+    <img src="cartoon.gif" class="sticker" alt="Cute sticker">
+
+    <h1>Do you love me?</h1>
+
+    <button id="yesBtn">Yes</button>
+    <button id="noBtn">No</button>
+
+</div>
+
+<script>
+
+// YES → open new page
+document.getElementById("yesBtn").onclick = function () {
+    window.location.href = "yes.html";
+};
+
+const noBtn = document.getElementById("noBtn");
+
+noBtn.addEventListener("mouseover", moveButton);
+noBtn.addEventListener("touchstart", moveButton); // for phone
+noBtn.addEventListener("click", moveButton);
+
+function moveButton() {
+
+    const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
+    const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
+
+    noBtn.style.left = x + "px";
+    noBtn.style.top = y + "px";
+}
+</script>
+<script>
+
+// YES → open new page
+const yesBtn = document.getElementById("yesBtn");
+
+yesBtn.onclick = function () {
+    window.location.href = "yes.html";
+};
+
+// YES moves slightly but stays clickable
+yesBtn.addEventListener("mouseover", moveYes);
+yesBtn.addEventListener("touchstart", moveYes);
+
+function moveYes() {
+
+    // move only a little (not far)
+    const x = (Math.random() - 0.5) * 120;
+    const y = (Math.random() - 0.5) * 120;
+
+    yesBtn.style.transform =
+        `translate(${x}px, ${y}px)`;
+
+}
+</script>
+
+</body>
+</html>
