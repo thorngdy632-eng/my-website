@@ -3,120 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Congratulations 💖</title>
+    <title>Hi👻</title>
 
     <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@600&family=Pacifico&display=swap" rel="stylesheet">
 
-    <style>
-        body {
-            margin: 0;
-            min-height: 100vh;
-            background: linear-gradient(to bottom right, #ff9ec4, #ffd6e7);
-            /* Using Fredoka as the main cute font */
-            font-family: 'Fredoka', sans-serif;
-            text-align: center;
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .container {
-            padding: 20px;
-            z-index: 10; /* Keeps text above the floating hearts */
-        }
-
-        h1 {
-            /* Using Pacifico for the "Handwritten" look */
-            font-family: 'Pacifico', cursive;
-            font-size: 12vw; 
-            color: white;
-            text-shadow: 3px 3px 10px rgba(0,0,0,0.1);
-            margin: 0;
-        }
-
-        p {
-            font-size: 5vw;
-            color: white;
-            margin-top: 10px;
-        }
-
-        button {
-            font-family: 'Fredoka', sans-serif;
-            font-size: 5vw;
-            font-weight: 600;
-            padding: 14px 28px;
-            border: none;
-            border-radius: 30px;
-            background: white;
-            color: #ff5c9a;
-            cursor: pointer;
-            margin-top: 20px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            transition: transform 0.2s;
-        }
-
-        button:active {
-            transform: scale(0.95); /* Little bounce when clicked */
-        }
-
-        /* Floating hearts */
-        .heart {
-            position: absolute;
-            bottom: -10%;
-            pointer-events: none; /* User can click through them */
-            animation: floatUp linear infinite;
-        }
-
-        @keyframes floatUp {
-            0% {
-                transform: translateY(0) rotate(0deg);
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(-120vh) rotate(360deg);
-                opacity: 0;
-            }
-        }
-    </style>
+<style>
+  img {
+    max-width: 100%; /* Ensures the image doesn't overflow its container */
+    height: auto;    /* Maintains the image's aspect ratio */
+    display: block;  /* Helps remove unwanted whitespace below the image */
+  }
+</style>
 </head>
 
 <body>
 
-<div class="container">
-    <h1>Congratulations 💖</h1>
-    <p>You are officially my favorite person 🥰</p>
+<picture>
+  <!-- Image for screens up to 600px wide -->
+  <img src="Rous.jfif" alt="A detailed description of the image">
+</picture>
 
-    <button onclick="alert('Love you forever 💕')">
-        Hug Me 🤗
-    </button>
-</div>
-
-<script>
-    function createHeart() {
-        const heart = document.createElement("div");
-        heart.className = "heart";
-        
-        // Randomly pick between different pink hearts
-        const types = ["💗", "💖", "💝", "💕"];
-        heart.innerHTML = types[Math.floor(Math.random() * types.length)];
-
-        heart.style.left = Math.random() * 100 + "vw";
-        heart.style.fontSize = (20 + Math.random() * 30) + "px";
-        heart.style.animationDuration = (4 + Math.random() * 4) + "s";
-        heart.style.opacity = Math.random();
-
-        document.body.appendChild(heart);
-
-        // Clean up memory
-        setTimeout(() => {
-            heart.remove();
-        }, 8000);
-    }
-
-    // Generate hearts
-    setInterval(createHeart, 400);
-</script>
 
 </body>
 </html>
