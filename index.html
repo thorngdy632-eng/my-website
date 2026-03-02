@@ -14,53 +14,54 @@ body {
     margin: 0;
 }
 
-/* Center everything */
+/* Center container */
 .container {
     margin-top: 8vh;
     padding: 10px;
 }
 
-/* Cartoon sticker — responsive */
+/* Sticker */
 .sticker {
     width: 80%;
     max-width: 260px;
     border-radius: 20px;
 }
 
-/* Question text */
+/* Question */
 h1 {
     margin: 20px 0;
     color: #333;
-    font-size: 6vw; /* auto-scale text */
+    font-size: 6vw;
 }
 
-/* Buttons style */
+/* Buttons */
 button {
-  background-color: #ff69b4;
+  background-color: #f383ea;
   border: none;
   color: white;
   padding: 14px 28px;
   font-size: 18px;
-  margin: 10px;
   cursor: pointer;
   border-radius: 20px;
   box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  position: absolute;
+  transition: 0.25s;
 }
 
-/* YES button */
+/* Initial positions */
 #yesBtn {
-    position: relative;
-    left: -20%;
-    background: #ff7b9c;
-    transition: transform -0.25s ease;
+    background: #80f1ab;
+    top: 70%;
+    left: 20%;
+    background: #80f1ab;
+    transition: transform 0.25s ease;
 }
 
-/* NO button */
 #noBtn {
-    background: #ff4d4d;
-    position: absolute;
-    left: 55%;
-    transition: transform 0.25s ease;
+    background: #80f1ab;
+    top: 70%;
+    left: 58%;
+    
 }
 </style>
 </head>
@@ -68,51 +69,52 @@ button {
 <body>
 
 <div class="container">
-
-    <!-- Replace with your GIF or video -->
-    <img src="cartoon.gif" class="sticker" alt="Cute sticker">
-
-    <h1>Do you love me?</h1>
-
-    <button id="yesBtn">Yes</button>
-    <button id="noBtn">No</button>
-
+    <img src="cartoon1.gif" class="sticker" alt="Cute sticker">
+    <h1>Do you like me?</h1>
 </div>
+
+<button id="yesBtn">Yes</button>
+<button id="noBtn">No</button>
 
 <script>
 
-// YES → open new page
-document.getElementById("yesBtn").onclick = function () {
+const yesBtn = document.getElementById("yesBtn");
+const noBtn = document.getElementById("noBtn");
+
+// YES → open page
+yesBtn.onclick = function () {
     window.location.href = "yes.html";
 };
 
-const noBtn = document.getElementById("noBtn");
+// YES moves sometimes (not always)
+yesBtn.addEventListener("mouseover", moveYes);
+yesBtn.addEventListener("touchstart", moveYes);
 
-noBtn.addEventListener("mouseover", moveButton);
-noBtn.addEventListener("touchstart", moveButton); // for phone
-noBtn.addEventListener("click", moveButton);
+// NO moves always
+noBtn.addEventListener("mouseover", moveNo);
+noBtn.addEventListener("touchstart", moveNo);
 
-function moveButton() {
+function moveYes(e) {
 
+    // 70% chance to move
+    if (Math.random() < 0.5) {
+
+        const x = Math.random() * (window.innerWidth - yesBtn.offsetWidth);
+        const y = Math.random() * (window.innerHeight - yesBtn.offsetHeight);
+
+        yesBtn.style.left = x + "px";
+        yesBtn.style.top = y + "px";
+    }
+    // 30% → stay still so user can click
+}
+
+function moveNo() {
     const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
     const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
 
     noBtn.style.left = x + "px";
     noBtn.style.top = y + "px";
 }
-</script>
-<script>
-
-// YES → open new page
-const yesBtn = document.getElementById("yesBtn");
-
-yesBtn.onclick = function () {
-    window.location.href = "yes.html";
-};
-
-// YES moves slightly but stays clickable
-yesBtn.addEventListener("mouseover", moveYes);
-yesBtn.addEventListener("touchstart", moveYes);
 
 </script>
 
